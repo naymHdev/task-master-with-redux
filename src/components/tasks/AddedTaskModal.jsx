@@ -1,9 +1,20 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/features/tasks/taskSlice";
 
-const AddedTaskModal = () => {
-  const { register, handleSubmit } = useForm();
+const AddedTaskModal = ({ setIsOpen }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    reset();
+    dispatch(addTask(data));
+  };
+
+  const onCancel = () => {
+    reset();
+    setIsOpen(false);
+  };
 
   return (
     <div>
@@ -61,8 +72,12 @@ const AddedTaskModal = () => {
           </select>
         </div>
         <div className="text-white flex items-center gap-5">
-          <button className="btn bg-primary">Submit</button>
-          <button className="btn bg-red-600">Cancel</button>
+          <button type="submit" className="btn bg-primary">
+            Submit
+          </button>
+          <button onClick={() => onCancel()} className="btn bg-red-600">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
