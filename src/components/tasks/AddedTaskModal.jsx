@@ -21,14 +21,14 @@ const AddedTaskModal = ({ setIsOpen }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 mt-3">
         <label htmlFor="title">Title</label>
         <input
-          className="w-full rounded-md"
+          className="w-full rounded-md bg-gray-300 border-none"
           id="title"
           defaultValue="test"
           {...register("title")}
         />
         <label htmlFor="description">Description</label>
         <textarea
-          className="w-full rounded-md"
+          className="w-full rounded-md bg-gray-300 border-none"
           name=""
           id="description"
           cols="2"
@@ -38,7 +38,7 @@ const AddedTaskModal = ({ setIsOpen }) => {
         <div>
           <label htmlFor="deadline">Deadline</label>
           <input
-            className="w-full rounded-md"
+            className="w-full rounded-md bg-gray-300 border-none"
             id="deadline"
             type="date"
             {...register("deadline", { required: true })}
@@ -47,7 +47,7 @@ const AddedTaskModal = ({ setIsOpen }) => {
         <div>
           <label htmlFor="priority">Priority</label>
           <input
-            className="w-full rounded-md"
+            className="w-full rounded-md bg-gray-300 border-none"
             name="priority"
             id="priority"
             {...register("priority", { required: true })}
@@ -57,7 +57,7 @@ const AddedTaskModal = ({ setIsOpen }) => {
           <label htmlFor="assignTo">Assign To</label>
 
           <select
-            className="w-full rounded-md"
+            className="w-full rounded-md bg-gray-300 border-none"
             id="assignTo"
             {...register("assignTo", { required: true })}
           >
