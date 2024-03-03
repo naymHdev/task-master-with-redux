@@ -9,10 +9,10 @@ import { useSelector } from "react-redux";
 const Tasks = () => {
   let [isOpen, setIsOpen] = useState(false);
   const { tasks } = useSelector((state) => state.tasksSlice);
-  
-  const pendingTasks = tasks.filter(item => item.status === 'pending')
-  const runningTasks = tasks.filter(item => item.status === 'running')
-  const doneTasks = tasks.filter(item => item.status === 'done')
+
+  const pendingTasks = tasks.filter((item) => item.status === "pending");
+  const runningTasks = tasks.filter((item) => item.status === "running");
+  const doneTasks = tasks.filter((item) => item.status === "done");
 
   return (
     <div className="h-screen grid grid-cols-12">
@@ -71,9 +71,6 @@ const Tasks = () => {
               {runningTasks?.map((item) => (
                 <TaskCard key={item?.id} task={item} />
               ))}
-              {/* {tasks?.map((item) => (
-                <TaskCard key={item?.id} />
-              ))} */}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">

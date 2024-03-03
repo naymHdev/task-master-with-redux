@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../../redux/features/tasks/taskSlice";
 
 const AddedTaskModal = ({ setIsOpen }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    reset();
+    // reset();
     dispatch(addTask(data));
   };
 
   const onCancel = () => {
-    reset();
+    // reset();
     setIsOpen(false);
   };
 
@@ -46,16 +46,18 @@ const AddedTaskModal = ({ setIsOpen }) => {
         </div>
         <div>
           <label htmlFor="priority">Priority</label>
-          <input
+          <select
             className="w-full rounded-md bg-gray-300 border-none"
-            name="priority"
-            id="priority"
+            id="assignTo"
             {...register("priority", { required: true })}
-          />
+          >
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
         </div>
         <div>
           <label htmlFor="assignTo">Assign To</label>
-
           <select
             className="w-full rounded-md bg-gray-300 border-none"
             id="assignTo"
