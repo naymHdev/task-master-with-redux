@@ -1,38 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tasks: [
-    {
-      id: 1,
-      status: "pending",
-      title: "Remove Button",
-      description:
-        "We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.",
-      date: "2023-08-28",
-      assignedTo: "Mir Hussain",
-      priority: "high",
-    },
-    {
-      id: 2,
-      status: "running",
-      title: "Remove Button",
-      description:
-        "We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.",
-      date: "2023-08-28",
-      assignedTo: "Mir Hussain",
-      priority: "medium",
-    },
-    {
-      id: 3,
-      status: "done",
-      title: "Remove Button",
-      description:
-        "We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.",
-      date: "2023-08-28",
-      assignedTo: "Mir Hussain",
-      priority: "low",
-    },
-  ],
+  tasks: [],
+  userTasks: [],
 };
 
 const taskSlice = createSlice({
@@ -41,10 +11,10 @@ const taskSlice = createSlice({
   reducers: {
     addTask: (state, { payload }) => {
       if (state.tasks.length === 0) {
-        state.tasks.push({ id: 1, state: "Pending", ...payload });
+        state.tasks.push({ id: 1, state: "pending", ...payload });
       } else {
         const lastEl = state.tasks.at(-1);
-        state.tasks.push({ id: lastEl.id + 1, state: "Pending", ...payload });
+        state.tasks.push({ id: lastEl.id + 1, state: "pending", ...payload });
       }
     },
     removeTask: (state, { payload }) => {
@@ -52,10 +22,16 @@ const taskSlice = createSlice({
     },
     updateStatus: (state, { payload }) => {
       const target = state.tasks.find((item) => item.id === payload.id);
-      target.status = payload.status;
+      target.state = payload.state;
+    },
+    userTasks: (state, { payload }) => {
+      state.userTasks = state.tasks.filter(
+        (item) => item.assignedTo === payload
+      );
     },
   },
 });
 
-export const { addTask, removeTask, updateStatus } = taskSlice.actions;
+export const { addTask, removeTask, updateStatus, userTasks } =
+  taskSlice.actions;
 export default taskSlice.reducer;

@@ -39,16 +39,16 @@ const AddedTaskModal = ({ setIsOpen }) => {
           <label htmlFor="deadline">Deadline</label>
           <input
             className="w-full rounded-md bg-gray-300 border-none"
-            id="deadline"
+            id="date"
             type="date"
-            {...register("deadline", { required: true })}
+            {...register("date", { required: true })}
           />
         </div>
         <div>
           <label htmlFor="priority">Priority</label>
           <select
             className="w-full rounded-md bg-gray-300 border-none"
-            id="assignTo"
+            id="priority"
             {...register("priority", { required: true })}
           >
             <option value="high">High</option>
@@ -57,11 +57,11 @@ const AddedTaskModal = ({ setIsOpen }) => {
           </select>
         </div>
         <div>
-          <label htmlFor="assignTo">Assign To</label>
+          <label htmlFor="assignedTo">Assign To</label>
           <select
             className="w-full rounded-md bg-gray-300 border-none"
-            id="assignTo"
-            {...register("assignTo", { required: true })}
+            id="assignedTo"
+            {...register("assignedTo", { required: true })}
           >
             <option value="eren">Eren</option>
             <option value="mikasa">Mikasa</option>

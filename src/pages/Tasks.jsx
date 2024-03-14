@@ -9,10 +9,14 @@ import { useSelector } from "react-redux";
 const Tasks = () => {
   let [isOpen, setIsOpen] = useState(false);
   const { tasks } = useSelector((state) => state.tasksSlice);
+  // console.log(tasks);
 
-  const pendingTasks = tasks.filter((item) => item.status === "pending");
-  const runningTasks = tasks.filter((item) => item.status === "running");
-  const doneTasks = tasks.filter((item) => item.status === "done");
+  const pendingTasks = tasks.filter((item) => item.state === "pending");
+  // console.log(pendingTasks);
+  const runningTasks = tasks.filter((item) => item.state === "running");
+  // console.log(runningTasks);
+  const doneTasks = tasks.filter((item) => item.state === "done");
+  // console.log(doneTasks);
 
   return (
     <div className="h-screen grid grid-cols-12">
@@ -56,7 +60,7 @@ const Tasks = () => {
             </div>
             <div className="space-y-3">
               {pendingTasks?.map((item) => (
-                <TaskCard key={item?.id} task={item} />
+                <TaskCard key={item?.id} item={item} />
               ))}
             </div>
           </div>
@@ -69,7 +73,7 @@ const Tasks = () => {
             </div>
             <div className="space-y-3">
               {runningTasks?.map((item) => (
-                <TaskCard key={item?.id} task={item} />
+                <TaskCard key={item?.id} item={item} />
               ))}
             </div>
           </div>
@@ -82,7 +86,7 @@ const Tasks = () => {
             </div>
             <div className="space-y-3">
               {doneTasks?.map((item) => (
-                <TaskCard key={item?.id} task={item} />
+                <TaskCard key={item?.id} item={item} />
               ))}
             </div>
           </div>
