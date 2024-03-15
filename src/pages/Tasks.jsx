@@ -12,11 +12,8 @@ const Tasks = () => {
   // console.log(tasks);
 
   const pendingTasks = tasks.filter((item) => item.state === "pending");
-  // console.log(pendingTasks);
   const runningTasks = tasks.filter((item) => item.state === "running");
-  // console.log(runningTasks);
   const doneTasks = tasks.filter((item) => item.state === "done");
-  // console.log(doneTasks);
 
   return (
     <div className="h-screen grid grid-cols-12">
